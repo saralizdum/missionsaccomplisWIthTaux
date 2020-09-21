@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Product</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Edit Activité</h1>
+		<br/>
+		<form action="#" th:action="@{/controle/addrec}" th:object="${recommandation}" method="post">
+			<table border="0" cellpadding="10">
+				<tr>
+					<td> ID:</td>
+					<td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td>Recommandation ID:</td>
+					<td><input type="text" th:field="*{rec}" readonly="readonly" /></td>
+				</tr>
+<!--				<tr>-->
+<!--					<td>Recommandation ID:</td>-->
+<!--					<td><input name="activiteId" type="text" th:field="*{suivis.id}" readonly="readonly" /></td>-->
+<!--				</tr>-->
+				<tr>
+					<td>Suivi ID:</td>
+					<td><input th:each="suivi : ${suivi}"
+							   th:text="${suivi.id}"
+							   th:value="${suivi.id}" name="suiviId" readonly="readonly"/></td>
+				</tr>
+<!--				<select name="suiviId" readonly="readonly">-->
+<!--					<option th:each="suivi : ${suivi}"-->
+<!--							th:text="${suivi.id}"-->
+<!--							th:value="${suivi.id}"-->
+<!--					></option>-->
+<!--				</select>-->
+				<tr>
+					<td>Incharge:</td>
+					<td><input type="text" th:field="*{incharge}" /></td>
+				</tr>
+				<tr>
+					<td>Taux:</td>
+					<td><input type="text" th:field="*{tauxavancement}" /></td>
+				</tr>
+				<tr>
+					<td>Pondération:</td>
+					<td><input type="text" th:field="*{ponderation}" /></td>
+				</tr>
+				<tr>
+					<td>Matérialisation:</td>
+					<td><input type="text" th:field="*{materialisation}" /></td>
+				</tr>
+				<tr>
+					<td>Dead-line:</td>
+					<td><input type="text" th:field="*{deadline}" /></td>
+				</tr>
+				<tr>
+					<td>Statut:</td>
+					<td><input type="text" th:field="*{statut}" /></td>
+				</tr>
+
+				<tr>
+					<td colspan="2"><button type="submit">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

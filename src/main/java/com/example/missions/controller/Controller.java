@@ -9,16 +9,11 @@ import com.example.missions.services.RecommandationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @org.springframework.stereotype.Controller
 @RequestMapping(value = "controle")
@@ -40,56 +35,99 @@ public class Controller {
 
     @RequestMapping(value = "afficher")
     public String index(Model model) {
+       String coun =service.sum();
+        Double count = service.coun();
+        model.addAttribute("coun",  coun);
+        model.addAttribute("count",  count);
         model.addAttribute("recommandations",  recommandationDao.findAll());
+        model.addAttribute("suivi",  suivisDao.findAll());
         model.addAttribute("title", "Liste des recommandations");
 
         return "controle/afficher";
     }
 
 
-    @RequestMapping("/count")
-    public ModelAndView count() {
+
+//    @RequestMapping("/count")
+//    public ModelAndView count() {
+//        String coun =service.count();
+//
+//        ModelAndView mav = new ModelAndView("controle/afficher");
+//        mav.addObject("coun", coun);
+//
+//        return mav;
+//    }
 
 
-        String coun =service.count();
-        ModelAndView mav = new ModelAndView("controle/count");
-        mav.addObject("coun", coun);
+//    @RequestMapping(value = "addrecommandation", method = RequestMethod.GET)
+//    public String displayAddProcessForm(Model model) {
+//
+//        model.addAttribute("title", "Add Risk Detail");
+//        model.addAttribute(new Recommandation());
+//        model.addAttribute("recommandation", recommandationDao.findAll());
+//
+//        return "controle/addrecommandation";
+//    }
+//
+//    @RequestMapping(value = "addrecommandation", method = RequestMethod.POST)
+//    public String processAddProcessForm(@ModelAttribute @Valid Recommandation newRecommandation,
+//                                        Errors errors, @RequestParam Long  suiviId, Model model) {
+//
+//        if (errors.hasErrors()) {
+//            model.addAttribute("title", "Add Recommandation Detail");
+//            model.addAttribute("recommandation", recommandationDao.findAll());
+//
+//            return "controle/addrecommandation";
+//        }
+//
+//        Suivis suivi = suivisDao.findById(suiviId).orElseThrow(() -> new IllegalArgumentException("Invalid suivi Id:" + suiviId));
+//        ;
+//        newRecommandation.setSuivis(suivi);
+//
+//        recommandationDao.save(newRecommandation);
+//
+//        return "redirect:/controle/afficher/";
+//
+//    }
+@RequestMapping(value = "addrec", method = RequestMethod.GET)
+public String displayAddProcessForm(Model model) {
 
-        return mav;
-    }
+    model.addAttribute("title", "Add Recommandation");
+    model.addAttribute(new Recommandation());
+    model.addAttribute("suivi", suivisDao.findAll());
 
 
-    @RequestMapping(value = "addriskd", method = RequestMethod.GET)
-    public String displayAddProcessForm(Model model) {
+    return "controle/addrec";
+}
 
-        model.addAttribute("title", "Add Risk Detail");
-        model.addAttribute(new Recommandation());
-        model.addAttribute("recommandation", recommandationDao.findAll());
-
-        return "controle/addrecommandation";
-    }
-
-    @RequestMapping(value = "addrecommandation", method = RequestMethod.POST)
+    @RequestMapping(value = "addrec", method = RequestMethod.POST)
     public String processAddProcessForm(@ModelAttribute @Valid Recommandation newRecommandation,
-                                        Errors errors, @RequestParam Long  suiviId, Model model) {
+                                        Errors errors, @RequestParam Long suiviId, Model model) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Risk Detail");
-            model.addAttribute("recommandation", recommandationDao.findAll());
+            model.addAttribute("title", "Add Recommandation");
+            model.addAttribute("suivi", suivisDao.findAll());
 
-            return "controle/addrecommandation";
+
+            return "controle/addrec";
         }
 
-        Suivis suivi = suivisDao.findById(suiviId).orElseThrow(() -> new IllegalArgumentException("Invalid suivi Id:" + suiviId));
-        ;
-        newRecommandation.setSuivis(suivi);
-
+        Suivis suivis = suivisDao.findById(suiviId).orElseThrow(() -> new IllegalArgumentException("Invalid suivi Id:" + suiviId));
+        newRecommandation.setSuivis(suivis);
         recommandationDao.save(newRecommandation);
 
         return "redirect:/controle/afficher/";
 
     }
+    @RequestMapping("/edit_product/{id}")
+    public ModelAndView showEditProductForm(@PathVariable(name = "id") Long  id) {
+        ModelAndView mav = new ModelAndView("controle/edit_product");
+        mav.addObject("suivi",suivisDao.findAll());
+        Recommandation recommandation= service.get(id);
+        mav.addObject("recommandation", recommandation );
 
+        return mav;
+    }
 
     @RequestMapping(value = "suivi", method = RequestMethod.GET)
     public String domaine(Model model, Long id) {

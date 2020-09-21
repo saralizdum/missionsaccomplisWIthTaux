@@ -17,7 +17,7 @@ public class Recommandation {
     private Long id;
 
     @Lob
-    private  String recommandation;
+    private  String rec;
 
     @NotNull
     private Double tauxavancement;
@@ -66,11 +66,29 @@ public class Recommandation {
   this.materialisation=materialisation;
         this.incharge=incharge;
         this.statut=statut;
-        this.recommandation = recommandation;
+
         this.ponderation=ponderation;
         this.tauxavancement=tauxavancement;
     }
     public Recommandation() {
+    }
+
+    public Recommandation(String rec, Double tauxavancement, Integer ponderation, Date deadline, @Size(max = 250) String incharge, String materialisation, @Size(max = 250) String statut) {
+        this.rec = rec;
+        this.tauxavancement = tauxavancement;
+        this.ponderation = ponderation;
+        this.deadline = deadline;
+        this.incharge = incharge;
+        this.materialisation = materialisation;
+        this.statut = statut;
+    }
+
+    public String getRec() {
+        return rec;
+    }
+
+    public void setRec(String rec) {
+        this.rec = rec;
     }
 
     public Long getId() {
@@ -81,13 +99,6 @@ public class Recommandation {
         this.id = id;
     }
 
-    public String getRecommandation() {
-        return recommandation;
-    }
-
-    public void setRecommandation(String recommandation) {
-        this.recommandation = recommandation;
-    }
 
     public Double getTauxavancement() {
         return tauxavancement;

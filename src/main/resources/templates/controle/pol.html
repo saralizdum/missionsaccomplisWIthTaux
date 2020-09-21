@@ -216,16 +216,13 @@
     <tr  th:each="recommandation : ${recommandations}">
         <td  th:each="recommandation : ${suivi}" th:text="${recommandation.process}"></td>
         <td  th:each="recommandation : ${suivi}" th:text="${recommandation.constats}"></td>
-        <td  th:text="${recommandation.rec}"></td>
+        <td  th:text="${recommandation.recommandation}"></td>
         <td  th:text="${recommandation.incharge}"></td>
         <td  th:text="${recommandation.deadline}"></td>
         <td  th:text="${recommandation.statut}"></td>
         <td  th:text="${recommandation.tauxavancement}"></td>
         <td  th:text="${recommandation.ponderation}"></td>
         <td  th:text="${recommandation.materialisation}"></td>
-        <td>
-            <a th:href="@{'/controle/edit_product/' + ${recommandation.id}}">Edit</a>
-
 
 
         <!--            <td> <a th:href="@{'/controle/edit_product/' + ${controle.id}}">Edit</a>-->

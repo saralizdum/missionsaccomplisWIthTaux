@@ -2,33 +2,100 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 </head>
 <body>
 
-<ul>
-    <li th:text="${coun}">
 
-    </li>
+<ul th:each="controle : ${suivi}">
+    <li  th:text="${controle.mission.intitule}"></li>
+
+    <li > Chef Mission : <a  th:text="${controle.mission.chefmission}"></a></li>
+    <li > Responsable Audité : <a  th:text="${controle.mission.responsableaudite}"></a></li>
+    <!--    <li th:each="controle : ${recommandations}" th:text="${controle.suivis.mission.chefmission}">-->
+    <!--    <li th:each="controle : ${recommandations}">Responsable Audité <a th:text="${controle.suivis.mission.responsableaudite}"></a>-->
+
 </ul>
-<FONT size="30pt"> <a th:text="${coun}"></a> </FONT>
+<h1>Responsable : <a th:text="${count}"></a></h1>
 
-<!--<table class="table table-bordered table-hover table-striped">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>In charge</th>-->
-<!--        <th> Taux </th>-->
 
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:each=" stat : ${coun}">-->
 
-<!--        <td th:text="${stat}" ><a></a></td>-->
+<!--    <li th:each="controle : ${recommandations}" th:text="${controle.suivis.mission.chefmission}">-->
+<!--    <li th:each="controle : ${recommandations}">Responsable Audité <a th:text="${controle.suivis.mission.responsableaudite}"></a>-->
 
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
+<!-- A VOIRRRRRRRRRRRRRRRRRRRRRRRRRRRR -->
+<FONT > <a th:text="${coun}"><h1>(%)</h1></a> </FONT>
+<h1 th:each=" b : ${re}"> </h1>
+<table border="1" class="table table-striped table-responsive-md">
+    <thead>
+    <tr>
+        <th >
+            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
+            Process
+
+            <!--                   </a>-->
+        </th>
+        <th>
+            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
+            Constat
+            <!--                   </a>-->
+        </th>
+        <th>
+            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
+            Recommandation
+            <!--                   </a>-->
+        </th>
+        <th>
+            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
+            incharge
+            <!--                   </a>-->
+        </th>
+        <th>
+            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
+            Deadline
+            <!--                   </a>-->
+        </th>
+        <th>
+            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
+            statut
+            <!--                   </a>-->
+        </th>
+        <th>
+            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
+            Taux d'avancement (%)
+            <!--                   </a>-->
+        </th>
+        <th>
+            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
+            Matérialisation
+            <!--                   </a>-->
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="recommandation : ${recommandations}">
+        <td th:each="recommandation : ${suivi}" th:text="${recommandation.process}"></td>
+        <td th:each="recommandation : ${suivi}" th:text="${recommandation.constats}"></td>
+        <td th:text="${recommandation.recommandation}"></td>
+        <td th:text="${recommandation.incharge}"></td>
+        <td th:text="${recommandation.deadline}"></td>
+        <td th:text="${recommandation.statut}"></td>
+        <td th:text="${recommandation.tauxavancement}"></td>
+        <td th:text="${recommandation.materialisation}"></td>
+
+        <!--            <td> <a th:href="@{'/controle/edit_product/' + ${controle.id}}">Edit</a>-->
+        <!--                <a th:href="@{'/controle/delete/' + ${controle.id}}">Delete</a>-->
+        <!--            </td>-->
+    </tr>
+    </tbody>
+</table>
+
+
 
 </body>
+
+
 </html>
