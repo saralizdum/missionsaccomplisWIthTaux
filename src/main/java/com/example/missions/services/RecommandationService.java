@@ -2,8 +2,10 @@ package com.example.missions.services;
 
 
 
+import com.example.missions.dao.MissionDao;
 import com.example.missions.dao.RecommandationDao;
 import com.example.missions.dao.SuivisDao;
+import com.example.missions.entities.Mission;
 import com.example.missions.entities.Recommandation;
 import com.example.missions.entities.Suivis;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,23 +20,29 @@ public class RecommandationService {
     RecommandationDao recommandationDao;
 
     @Autowired
+    MissionDao missionDao;
+    @Autowired
     SuivisDao suivisDao;
 
-    public List<String> count() {
-        return recommandationDao.sum();
+    public ArrayList<String> count() {
+        return missionDao.sum();
     }
 
 
-    public String sum() {
-        List<String> collection =  recommandationDao.sum();
-
-        String count= collection.iterator().next();
-        for(String value : collection){
-
-            count =value;
-        }
-        return  count;
+    public String find() {
+        return  recommandationDao.find();
     }
+
+//    public List<String> sum() {
+//        List<String> collection =  recommandationDao.sum();
+//
+//        String count= collection.iterator().next();
+//        for(String value : collection){
+//
+//            count =value;
+//        }
+//        return  count;
+//    }
 
 //    public  String sum()
 //    {
@@ -57,6 +65,8 @@ public class RecommandationService {
     public Recommandation get(Long id) {
         return recommandationDao.findById(id).get();
     }
+
+
 
 
     public double coun()

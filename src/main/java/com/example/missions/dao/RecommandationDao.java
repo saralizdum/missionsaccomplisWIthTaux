@@ -7,28 +7,26 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 @Repository
 @Transactional
 public interface RecommandationDao extends CrudRepository<Recommandation,Long> {
 
 
-//    @Query(value = "SELECT distinct r.incharge, (SELECT (sum (r.tauxavancement * r.ponderation)) /(sum (r.ponderation)) FROM Recommandation r) FROM Recommandation r group by r.incharge"
-//    )
-////
-////    Double sum();
-////
-//
-//    String sum();
-    @Query(value = "SELECT distinct r.incharge , (sum (r.tauxavancement * r.ponderation)) /(sum (r.ponderation)) FROM Recommandation r group by r.incharge"
+    @Query(value = "SELECT distinct r.incharge, (SELECT (sum (r.tauxavancement * r.ponderation)) /(sum (r.ponderation)) FROM Recommandation r) FROM Recommandation r group by r.incharge"
     )
+//
 //    Double sum();
-//    String sum();
-    List<String> sum();
+////
+
+    String sum();
+//    @Query(value = "SELECT  r.incharge , (sum (r.tauxavancement * r.ponderation)) /(sum (r.ponderation)) FROM Recommandation r group by r.incharge"
+//    )
+////    Double sum();
+////    String sum();
+//
+//    List<String> sum();
 //    HashSet<String> sum();
 
     @Query(value = "SELECT (sum (r.tauxavancement * r.ponderation)) /(sum (r.ponderation)) FROM Recommandation r "
@@ -36,6 +34,18 @@ public interface RecommandationDao extends CrudRepository<Recommandation,Long> {
 
     Double coun();
 //
+
+
+    @Query(value = "SELECT m.intitule FROM Recommandation r left outer  join Suivis s on s.id=r.suivis.id left " +
+            "outer join Mission m on m.id=s.mission.id"
+    )
+//
+//    Double sum();
+////
+
+    String find();
+
+
 
 
 }

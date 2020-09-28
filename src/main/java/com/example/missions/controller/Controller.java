@@ -3,6 +3,7 @@ package com.example.missions.controller;
 import com.example.missions.dao.MissionDao;
 import com.example.missions.dao.RecommandationDao;
 import com.example.missions.dao.SuivisDao;
+import com.example.missions.entities.Mission;
 import com.example.missions.entities.Recommandation;
 import com.example.missions.entities.Suivis;
 import com.example.missions.services.RecommandationService;
@@ -35,10 +36,13 @@ public class Controller {
 
     @RequestMapping(value = "afficher")
     public String index(Model model) {
-       String coun =service.sum();
+       ArrayList<String> coun =service.count();
+       String find =service.find();
         Double count = service.coun();
-        model.addAttribute("coun",  coun);
+
         model.addAttribute("count",  count);
+        model.addAttribute("find",  find);
+
         model.addAttribute("recommandations",  recommandationDao.findAll());
         model.addAttribute("suivi",  suivisDao.findAll());
         model.addAttribute("title", "Liste des recommandations");
@@ -128,6 +132,15 @@ public String displayAddProcessForm(Model model) {
 
         return mav;
     }
+//    @RequestMapping("/afficherrec/{id}")
+//    public ModelAndView showEditForm(@PathVariable(name = "id") Long  id) {
+//        ModelAndView mav = new ModelAndView("controle/afficherrec");
+//        mav.addObject("suivi",suivisDao.findAll());
+//        Mission recommandation= service.get(id);
+//        mav.addObject("mission", recommandation );
+//
+//        return mav;
+//    }
 
     @RequestMapping(value = "suivi", method = RequestMethod.GET)
     public String domaine(Model model, Long id) {

@@ -154,95 +154,17 @@
     <!--===============================================================================================-->
 </head>
 <body>
-<center> SUIVI MISE EN PLACE DES RECOMMANDATIONS</center>
-<!--<ul>-->
 <!--    <li th:each="recommandation : ${suivi}" th:text="${recommandation.mission.chefmission}"></li>-->
 <!--    <li th:each="recommandation : ${suivi}" th:text="${recommandation.mission.intitule}"></li>-->
 <!--    <li th:each="recommandation : ${suivi}" th:text="${recommandation.mission.responsableaudite}"></li>-->
 <!--</ul>-->
 
-<ul>
-    <li th:text="${find}">
+<ul  th:each="mission : ${missions}">
 
-    </li>
+
+<a   th:href="@{'/controle/afficherrec/' + ${mission.id}}"> <li th:text="${mission.intitule}"> </li></a>
+
 </ul>
-
-<table>
-    <thead>
-    <tr>
-        <th >
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Process
-
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Constat
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Recommandation
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            incharge
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Deadline
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            statut
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Taux d'avancement (%)
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Pondération
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Matérialisation
-            <!--                   </a>-->
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr  th:each="recommandation : ${recommandations}">
-        <td  th:each="recommandation : ${suivi}" th:text="${recommandation.process}"></td>
-        <td  th:each="recommandation : ${suivi}" th:text="${recommandation.constats}"></td>
-        <td  th:text="${recommandation.rec}"></td>
-        <td  th:text="${recommandation.incharge}"></td>
-        <td  th:text="${recommandation.deadline}"></td>
-        <td  th:text="${recommandation.statut}"></td>
-        <td  th:text="${recommandation.tauxavancement}"></td>
-        <td  th:text="${recommandation.ponderation}"></td>
-        <td  th:text="${recommandation.materialisation}"></td>
-        <td>
-            <a th:href="@{'/controle/edit_product/' + ${recommandation.id}}">Edit</a>
-
-
-
-        <!--            <td> <a th:href="@{'/controle/edit_product/' + ${controle.id}}">Edit</a>-->
-        <!--                <a th:href="@{'/controle/delete/' + ${controle.id}}">Delete</a>-->
-        <!--            </td>-->
-    </tr>
-    </tbody>
-</table>
-
-
-
 
 
 
