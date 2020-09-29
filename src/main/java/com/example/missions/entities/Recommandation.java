@@ -25,9 +25,9 @@ public class Recommandation {
     @NotNull
     private Integer ponderation;
 
-    @Column
-    @Type(type="date")
-    private Date deadline;
+    @NotNull
+    @Size(max = 250)
+    private String deadline;
 
     @NotNull
     @Size(max = 250)
@@ -61,19 +61,11 @@ public class Recommandation {
         this.suivis = suivis;
     }
 
-    public Recommandation(String recommandation, Double tauxavancement, Integer ponderation, String statut, String incharge,Date deadline,String materialisation) {
-  this.deadline=deadline;
-  this.materialisation=materialisation;
-        this.incharge=incharge;
-        this.statut=statut;
 
-        this.ponderation=ponderation;
-        this.tauxavancement=tauxavancement;
-    }
     public Recommandation() {
     }
 
-    public Recommandation(String rec, Double tauxavancement, Integer ponderation, Date deadline, @Size(max = 250) String incharge, String materialisation, @Size(max = 250) String statut) {
+    public Recommandation(String rec, Double tauxavancement, Integer ponderation, String deadline, @Size(max = 250) String incharge, String materialisation, @Size(max = 250) String statut) {
         this.rec = rec;
         this.tauxavancement = tauxavancement;
         this.ponderation = ponderation;
@@ -116,11 +108,11 @@ public class Recommandation {
         this.ponderation = ponderation;
     }
 
-    public Date getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 

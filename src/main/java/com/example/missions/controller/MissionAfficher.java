@@ -10,6 +10,7 @@ import com.example.missions.services.MissionService;
 import com.example.missions.services.RecommandationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -64,7 +65,27 @@ public class MissionAfficher {
 
         return mav;
     }
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+//        Mission mission =  missionDao.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        Recommandation recommandation=  recommandationDao.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        model.addAttribute("mission", recommandation);
+        return "controle/update-user";
+    }
 
+    @PostMapping("/update/{id}")
+    public String updateUser(@PathVariable("id") long id, @Valid Recommandation recommandation, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            recommandation.setId(id);
+            return "controle/update-user";
+        }
+        Mission mission=service.get(id);
+        recommandationDao.save(recommandation);
+//        missionDao.save(mission);
+
+        model.addAttribute("mission", recommandationDao.findAll());
+        return "redirect:/controle/afficherrec/"+ mission.getId() ;
+    }
 
 
 }

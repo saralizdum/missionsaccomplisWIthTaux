@@ -219,17 +219,10 @@
             Matérialisation
             <!--                   </a>-->
         </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-           Action
-            <!--                   </a>-->
-        </th>
     </tr>
     </thead>
     <tbody>
     <tr  th:each="mission: ${mission}">
-
-
 
         <td  th:text="${mission.process}"></td>
         <td  th:text="${mission.constats}"></td>
@@ -240,12 +233,12 @@
         <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.tauxavancement}"></td>
         <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.ponderation}"></td>
         <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.materialisation}"></td>
-        <td><a th:href="@{/controle/edit/{id}(id=${mission.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2">Edit</i></a></td>
+<!--        <td><a th:each="recommandation: ${recommandation}" th:href="@{/controle/edit/{id}(id=${recommandation.id})}">Edit</a></td>-->
+<!--        <td><a th:href="@{/controle/edit/{id}(id=${mission.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2">Edit</i></a></td>-->
         <td>
 
 
-
-            <!--            <td> <a th:href="@{'/controle/edit_product/' + ${controle.id}}">Edit</a>-->
+<!--                        <td> <a th:href="@{'/controle/edit_product/' + ${controle.id}}">Edit</a>-->
             <!--                <a th:href="@{'/controle/delete/' + ${controle.id}}">Delete</a>-->
             <!--            </td>-->
     </tr>
