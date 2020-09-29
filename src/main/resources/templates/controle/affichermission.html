@@ -159,13 +159,51 @@
 <!--    <li th:each="recommandation : ${suivi}" th:text="${recommandation.mission.responsableaudite}"></li>-->
 <!--</ul>-->
 
-<ul  th:each="mission : ${missions}">
+<!--<ul  th:each="mission : ${missions}">-->
+
+<!--    <li th:text="${mission.filiale.nom}"></li>-->
+<!--<a   th:href="@{'/controle/afficherrec/' + ${mission.id}}"> <li th:text="${mission.intitule}"> </li></a>-->
 
 
-<a   th:href="@{'/controle/afficherrec/' + ${mission.id}}"> <li th:text="${mission.intitule}"> </li></a>
+<!--</ul>-->
 
-</ul>
+<table>
+    <thead>
+    <tr>
+        <th >
+            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
+          Filiale
 
+            <!--                   </a>-->
+        </th>
+        <th>
+            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
+            Mission
+            <!--                   </a>-->
+        </th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="mission: ${missions}">
+
+
+
+        <td  th:text="${mission.filiale.nom}"></td>
+        <td>   <a   th:href="@{'/controle/afficherrec/' + ${mission.id}}"   th:text="${mission.intitule}"> </a></td>
+
+
+
+
+
+
+            <!--            <td> <a th:href="@{'/controle/edit_product/' + ${controle.id}}">Edit</a>-->
+            <!--                <a th:href="@{'/controle/delete/' + ${controle.id}}">Delete</a>-->
+            <!--            </td>-->
+    </tr>
+    </tbody>
+</table>
 
 
 </body>

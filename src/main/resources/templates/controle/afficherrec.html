@@ -161,9 +161,18 @@
 <!--    <li th:each="recommandation : ${suivi}" th:text="${recommandation.mission.responsableaudite}"></li>-->
 <!--</ul>-->
 
-<h1 th:text="${title}"></h1>
-<h1 th:text="${chef}"></h1>
-<h1 th:text="${responsable}"></h1>
+<dl>
+    <dt>Mission :   <dd th:text="${title}"></dd></dt>
+
+<!--    <dt> Chef Mission :</dt>-->
+<!--    <dd th:text="${chef}"></dd>-->
+<!--    <dt> Responsable Audité :</dt>-->
+<!--    <dd th:text="${responsable}"></dd>-->
+</dl>
+
+<!-- Mission : <p th:text="${title}"></p>-->
+<!-- Chef Mission :<p th:text="${chef}"></p>-->
+<!-- Responsable Audité : <p th:text="${responsable}"></p>-->
 <!--<ul>-->
 <!--    <li th:text="${find}">-->
 
@@ -237,11 +246,13 @@
         <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.incharge}"></td>
         <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.deadline}"></td>
         <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.statut}"></td>
-        <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.tauxavancement}"></td>
+        <td th:each="recommandation: ${recommandation}" th:text="${recommandation.tauxavancement}"></td>
         <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.ponderation}"></td>
         <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.materialisation}"></td>
         <td><a th:href="@{/controle/edit/{id}(id=${mission.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2">Edit</i></a></td>
         <td>
+
+
 
 
 

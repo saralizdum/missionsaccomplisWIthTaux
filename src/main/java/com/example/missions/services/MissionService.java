@@ -2,9 +2,11 @@ package com.example.missions.services;
 
 
 
+import com.example.missions.dao.FilialeDao;
 import com.example.missions.dao.MissionDao;
 import com.example.missions.dao.RecommandationDao;
 import com.example.missions.dao.SuivisDao;
+import com.example.missions.entities.Filiale;
 import com.example.missions.entities.Mission;
 import com.example.missions.entities.Recommandation;
 import com.example.missions.entities.Suivis;
@@ -24,6 +26,9 @@ public class MissionService {
     @Autowired
     SuivisDao suivisDao;
 
+    @Autowired
+    FilialeDao filialeDao;
+
 
 
 
@@ -35,6 +40,10 @@ public class MissionService {
 
     public Suivis gett(Long id) {
         return  suivisDao.findById(id).get();
+    }
+
+    public Filiale ge(Long id) {
+        return  filialeDao.findById(id).get();
     }
 
 

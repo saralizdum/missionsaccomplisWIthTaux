@@ -30,8 +30,19 @@ public class Mission {
 
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
     private Set<Suivis> suivis;
+    @ManyToOne
+    @JoinColumn(name = "mission_filiale_id")
+    private Filiale filiale;
 
-    public Mission(@Size(max = 250) String intitule,@Size(max = 250) String responsableaudite, @Size(max = 250) String chefmission) {
+    public Filiale getFiliale() {
+        return filiale;
+    }
+
+    public void setFiliale(Filiale filiale) {
+        this.filiale = filiale;
+    }
+
+    public Mission(@Size(max = 250) String intitule, @Size(max = 250) String responsableaudite, @Size(max = 250) String chefmission) {
 
         this.intitule=intitule;
         this.chefmission=chefmission;

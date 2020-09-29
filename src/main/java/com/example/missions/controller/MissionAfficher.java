@@ -3,6 +3,7 @@ package com.example.missions.controller;
 import com.example.missions.dao.MissionDao;
 import com.example.missions.dao.RecommandationDao;
 import com.example.missions.dao.SuivisDao;
+import com.example.missions.entities.Filiale;
 import com.example.missions.entities.Mission;
 import com.example.missions.entities.Recommandation;
 import com.example.missions.entities.Suivis;
@@ -31,17 +32,11 @@ public class MissionAfficher {
     @Autowired
     MissionDao missionDao;
 
-
     @Autowired
     MissionService service;
 
-
-
-
-
     @RequestMapping(value = "affichermission")
-    public String index(Model model) {
-
+    public String index(Model model ) {
 
         model.addAttribute("missions",  missionDao.findAll());
 
@@ -51,6 +46,7 @@ public class MissionAfficher {
     }
 
     @RequestMapping("/afficherrec/{id}")
+
     public ModelAndView showEditProductForm(@PathVariable(name = "id") Long  id) {
         ModelAndView mav = new ModelAndView("controle/afficherrec");
         Mission mission=service.get(id);
@@ -60,7 +56,6 @@ public class MissionAfficher {
         mav.addObject("responsable", mission.getResponsableaudite() );
         mav.addObject("recommandation", suivis.getRecommandations());
         mav.addObject("mission", mission.getSuivis() );
-
         mav.addObject("id", mission.getId() );
 
         return mav;
