@@ -146,20 +146,7 @@
         {
             display: block;
         }
-        div#blocnews {
-            float:right;
-            width:300px;
-            height:150px;
-            margin-left: 40px;
 
-        }
-        div#blocn {
-            float:right;
-            width:200px;
-            height:150px;
-            margin-left: 40px;
-
-        }
 
 
     </style>
@@ -167,166 +154,52 @@
     <!--===============================================================================================-->
 </head>
 <body>
-&nbsp;&nbsp;
-<center>
-  <strong>Tableau de bord de suivi de la mise en place des recommandations d'audit</strong>
-</center>
-<!--<ul>-->
 <!--    <li th:each="recommandation : ${suivi}" th:text="${recommandation.mission.chefmission}"></li>-->
 <!--    <li th:each="recommandation : ${suivi}" th:text="${recommandation.mission.intitule}"></li>-->
 <!--    <li th:each="recommandation : ${suivi}" th:text="${recommandation.mission.responsableaudite}"></li>-->
 <!--</ul>-->
 
+<!--<ul  th:each="mission : ${missions}">-->
 
-<!--<dl>-->
-<!--   - <dt th:text="${title}"></dt>-->
-
-<!--&lt;!&ndash;    <dt> Chef Mission :</dt>&ndash;&gt;-->
-<!--&lt;!&ndash;    <dd th:text="${chef}"></dd>&ndash;&gt;-->
-<!--&lt;!&ndash;    <dt> Responsable Audité :</dt>&ndash;&gt;-->
-<!--&lt;!&ndash;    <dd th:text="${responsable}"></dd>&ndash;&gt;-->
-<!--</dl>-->
-
-<br>
-<div >
-
-    <div ></div>
+<!--    <li th:text="${mission.filiale.nom}"></li>-->
+<!--<a   th:href="@{'/controle/afficherrec/' + ${mission.id}}"> <li th:text="${mission.intitule}"> </li></a>-->
 
 
-</div>
-<div id="contenu">
-
-    <div id="blocnews">Responsable <a th:text="${count}"></a></div>
-
-
-</div>
-<br>
-<div>
-
-
-    <div id="blocn"><a  th:text="${coun}"></a></div>
-
-</div>
-
-<p><strong><em> Mission</em></strong> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  <a th:text="${title}"></a></p>
-<p><strong><em> Chef de Mission</em></strong> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; <a th:text="${chef}"></a></p>
-<p><strong><em> Responsable audité </em></strong> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  <a th:text="${responsable}"></a></p>
-<!-- Chef Mission :<p th:text="${chef}"></p>-->
-<!-- Responsable Audité : <p th:text="${responsable}"></p>-->
-<!--<ul>-->
-<!--    <li th:text="${find}">-->
-
-<!--    </li>-->
 <!--</ul>-->
-
-<table>
+<!--<form method="get" action="search">-->
+<!--    <input type="text" name="keyword" />-->
+<!--    <input type="submit" value="Search" />-->
+<!--</form>-->
+<table align="center">
     <thead>
     <tr>
         <th >
             <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Process
+            Filiale
 
             <!--                   </a>-->
         </th>
         <th>
             <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Constat
+            Mission
             <!--                   </a>-->
         </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Recommandation
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            incharge
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Deadline
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            statut
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Taux d'avancement (%)
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Pondération
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-            Matérialisation
-            <!--                   </a>-->
-        </th>
-        <th>
-            <!--                <a th:href="@{'/controle/page/'+ ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">-->
-           Action
-            <!--                   </a>-->
-        </th>
+
+
     </tr>
-
     </thead>
     <tbody>
-    <tr th:each="suivi: ${mission}" >
+    <tr th:each="controle : ${result}">
 
-<!--        <td  th:text="${recommandation.suivis.process}"></td>-->
-<!--        <td  th:text="${recommandation.suivis.constats}"></td>-->
-<!--        <td th:text="${recommandation.constats}"></td>-->
-<!--        <td  th:text="${recommandation.process}"></td>-->
-        <td   th:text="${suivi.process}"></td>
-
-
-        <td   th:text="${suivi.constats}"></td>
-        <td   th:text="${suivi.rec}"></td>
-        <td   th:text="${suivi.incharge}"></td>
-        <td   th:text="${suivi.deadline}"></td>
-        <td   th:text="${suivi.statut}"></td>
-        <td   th:text="${suivi.tauxavancement}"></td>
-        <td   th:text="${suivi.ponderation}"></td>
-        <td   th:text="${suivi.materialisation}"></td>
-<!--        <td   th:text="${recommandation}"></td>-->
-
-<!--        <td  th:text="${recommandation.deadline}"></td>-->
-<!--        <td  th:text="${recommandation.statut}"></td>-->
-<!--        <td  th:text="${recommandation.tauxavancement}"></td>-->
-<!--        <td  th:text="${recommandation.ponderation}"></td>-->
-<!--        <td  th:text="${recommandation.materialisation}"></td>-->
+        <td th:text="${controle.filiale.nom}"></td>
+        <td>
+            <a    th:href="@{'/controle/afficherrec/' + ${controle.id}}" th:text="${controle.intitule}"> </a>
+        </td>
 
 
-<!--        <td  th:each="recommandation: ${recommandation}" th:text="${recommandations.rec}"></td>-->
-<!--        <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.incharge}"></td>-->
-<!--        <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.deadline}"></td>-->
-<!--        <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.statut}"></td>-->
-<!--        <td th:each="recommandation: ${recommandation}" th:text="${recommandation.tauxavancement}"></td>-->
-<!--        <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.ponderation}"></td>-->
-<!--        <td  th:each="recommandation: ${recommandation}" th:text="${recommandation.materialisation}"></td>-->
-        <td><button th:href="@{/controle/edit/{id}(id=${suivi.mission.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2">Edit</i></button></td>
-
-
-
-
-
-
-            <!--            <td> <a th:href="@{'/controle/edit_product/' + ${controle.id}}">Edit</a>-->
-            <!--                <a th:href="@{'/controle/delete/' + ${controle.id}}">Delete</a>-->
-            <!--            </td>-->
     </tr>
     </tbody>
 </table>
-
-
-
-
 
 
 </body>

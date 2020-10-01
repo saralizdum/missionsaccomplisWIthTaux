@@ -17,13 +17,23 @@
             <form action="#" th:action="@{/controle/update/{id}(id=${mission.id})}" th:object="${mission}" method="post">
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <label for="id" class="col-form-label">Id Suivi</label>
-                        <input type="text" th:field="*{suivis.id}" class="form-control" id="id" placeholder="Incharge" readonly="readonly">
-                        <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="text-danger"></span>
+<!--                        <label for="id" class="col-form-label">Id Suivi</label>-->
+                        <input type="hidden" th:field="*{mission.id}" class="form-control" id="id" placeholder="Mission" readonly="readonly">
+                        <span th:if="${#fields.hasErrors('id')}" th:errors="*{mission.id}" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="intitule" class="col-form-label">Recommandation</label>
-                        <input type="text" th:field="*{rec}" class="form-control" id="intitule" placeholder="Incharge">
+                        <!--                        <label for="intitule" class="col-form-label">Recommandation</label>-->
+                        <input type="hidden"  th:field="*{process}" class="form-control"  >
+                        <span th:if="${#fields.hasErrors('process')}" th:errors="*{process}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <!--                        <label for="intitule" class="col-form-label">Recommandation</label>-->
+                        <input type="hidden"  th:field="*{constats}" class="form-control" >
+                        <span th:if="${#fields.hasErrors('constats')}" th:errors="*{constats}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+<!--                        <label for="intitule" class="col-form-label">Recommandation</label>-->
+                        <input type="hidden"  th:field="*{rec}" class="form-control" id="intitule" placeholder="Incharge"readonly="readonly">
                         <span th:if="${#fields.hasErrors('rec')}" th:errors="*{rec}" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">

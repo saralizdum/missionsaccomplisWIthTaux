@@ -27,6 +27,8 @@ public class Filiale {
     public Filiale() {
     }
 
+
+
     public Filiale(@Size(max = 250) String nom, Set<Mission> missions) {
         Nom = nom;
         this.missions = missions;
